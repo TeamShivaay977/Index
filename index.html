@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -720,4 +720,117 @@
                     
         
         
-        <div 
+        <div class="main-content">
+            <div class="video-title-bar">
+                <div class="video-info">
+                    <div class="video-title">Star Sports 2 HD Live Stream</div>
+                    <div class="video-meta">
+                         
+                        
+                    </div>
+                </div>
+                <div class="video-actions">
+                    <a href="https://t.me/TeamShivaay977" class="action-btn" target="_blank" style="background-color: #0088cc; color: white; border-radius: 5px; padding: 5px 10px; text-decoration: none;"><i class="fab fa-telegram"></i> <span>Latest at Telegram</span></a>
+                    <button class="action-btn" id="fullscreen-btn"><i class="fas fa-expand"></i> <span>Fullscreen</span></button>
+                </div>
+            </div>
+            <div class="iframe-container" id="iframe-container">
+                <iframe src="https://savecontentbot-tgx-dl.vercel.app/player.html?id=ipso" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        
+            <script type="module" src="https://securepubads.shareus.io/scripts/tag/js/gpt.js" ></script>
+             <script>
+                 window._shareustag = window._shareustag || {cmd:[]};
+                _shareustag.cmd.push(function() {
+                  var slot1 = _shareustag.defineAutoAdSlot('/shareus-admanager/4277827614/5zXS03NbKm/Auto');
+                });
+             </script>
+           
+        
+    
+
+    <!--<div class="desktop-overlay">-->
+    <!--    <div class="desktop-message">-->
+    <!--        <i class="fas fa-mobile-alt mobile-icon"></i>-->
+    <!--        <h2>Please Watch from Mobile</h2>-->
+    <!--        <p>This stream is optimized for mobile viewing. Please visit this page from your mobile device for the best experience.</p>-->
+    <!--        <p>Or scan the QR code below:</p>-->
+    <!--        <div class="qr-code" id="qrcode"></div>-->
+    <!--        <p style="font-size: 14px;">Current URL: <span id="current-url" style="color: var(--primary-color);"></span></p>-->
+    <!--    </div>-->
+    <!--</div>-->
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Telegram Popup Functions
+        function showPopup() {
+            const popup = document.getElementById('telegramPopup');
+            popup.classList.add('active');
+        }
+        
+        function closePopup() {
+            const popup = document.getElementById('telegramPopup');
+            popup.classList.remove('active');
+        }
+        
+        // Toggle fullscreen function for the fullscreen button
+        document.addEventListener('DOMContentLoaded', function() {
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            
+            fullscreenBtn.addEventListener('click', function() {
+                const iframe = document.querySelector('iframe');
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { /* IE11 */
+                    iframe.msRequestFullscreen();
+                }
+            });
+
+            // Show popup after a short delay every time
+            setTimeout(showPopup, 2000);
+        });
+        
+        // Try to hide popups in iframe
+        window.addEventListener('load', function() {
+            const iframe = document.querySelector('iframe');
+            try {
+                iframe.contentWindow.postMessage({ action: 'hidePopups' }, '*');
+            } catch (e) {
+                console.log('Could not communicate with iframe:', e);
+            }
+        });
+
+        // QR Code generation
+        window.addEventListener('load', function() {
+            // Only run if we're on desktop
+            if (window.innerWidth >= 1025) {
+                const currentUrl = window.location.href;
+                document.getElementById('current-url').textContent = currentUrl;
+                
+                // Clear previous QR code if any
+                const qrcodeDiv = document.getElementById("qrcode");
+                qrcodeDiv.innerHTML = '';
+                
+                // Create QR Code with better options
+                new QRCode(qrcodeDiv, {
+                    text: currentUrl,
+                    width: 180,
+                    height: 180,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H,
+                    margin: 2
+                });
+            }
+        });
+    </script>
+</body>
+</html>
